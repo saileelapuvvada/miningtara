@@ -1,0 +1,217 @@
+<% include ../partials/header %>
+
+    <section class="ls  container-px-xl-0">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-8 col-xl-8 ls ">
+                    <div class="">
+                        <div class="fw-divider-space divider-xl-160 divider-lg-130 divider-md-90 divider-60"></div>
+                        <h2 class="special-heading text-left">
+                            <span class="text-capitalize">
+                                Account Details: <%=user.firstname%>
+                                    <%=user.lastname%>
+                            </span>
+                        </h2>
+                        <div class="divider-line bg-maincolor"></div>
+                        <div class="fw-divider-space divider-25"></div>
+
+                        <div class="divider-30 hidden-above-lg"></div>
+                        <form class="edit-form" action="/users/<%=user._id%>?_method=PUT" method="POST">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group has-placeholder">
+                                        <label for="">User Type <span class="required">*</span></label>
+                                        <select class="form-control" name='user_type' value="<%=user.userType%>"
+                                            required>
+                                            <option value="0">Select from list</option>
+                                            <option value="normal" <%=(user.userType==='normal' ) ? "selected" : "" %>
+                                                >Normal User</option>
+                                            <option value="memsa" <%=(user.userType==='memsa' ) ? "selected" : "" %>
+                                                >MEMSA User</option>
+                                            <option value="admin" <%=(user.userType==='admin' ) ? "selected" : "" %>
+                                                >Admin User</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="">MEMSA ID<span class="required">*</span></label>
+                                    <div class="form-group has-placeholder">
+
+                                        <input aria-required="true" size="30" required name="memsa_id" id=""
+                                            class="form-control" placeholder="Enter your MEMSA ID"
+                                            value="<%=user.mesmaId%>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group has-placeholder">
+                                        <label for="">Username <span class="required">*</span></label>
+                                        <input type="text" aria-required="true" size="30" required name="username" id=""
+                                            class="form-control" value="<%=user.username%>"
+                                            placeholder="Enter your username">
+                                    </div>
+                                </div>
+                                <%if (currentUser && currentUser.isAdmin) {%>
+                                    <div class="col-lg-6">
+                                        <div class="form-group has-placeholder">
+                                            <label for="">Status <span class="required">*</span></label>
+                                            <select class="form-control" name='status' value="<%=user.status%>"
+                                                required>
+                                                <option value="0">Select from list</option>
+                                                <option value="active" <%=(user.status==='active' ) ? "selected" : "" %>
+                                                    >active</option>
+                                                <option value="pending" <%=(user.status==='pending' ) ? "selected" : "" %>
+                                                    >pending</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group has-placeholder">
+                                        <label for="">Name <span class="required">*</span></label>
+                                        <input type="text" aria-required="true" size="30" value="<%=user.firstname%>"
+                                            required name="firstname" id="" class="form-control"
+                                            placeholder="Enter your name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group has-placeholder">
+                                        <label for="">Surname <span class="required">*</span></label>
+                                        <input type="text" aria-required="true" size="30" value="<%=user.lastname%>"
+                                            required name="lastname" id="" class="form-control"
+                                            placeholder="Enter your Surname">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group has-placeholder">
+                                        <label for="">Email <span class="required">*</span></label>
+                                        <input type="email" aria-required="true" size="30" value="<%=user.email%>"
+                                            type='email' required name="email" id="" class="form-control"
+                                            placeholder="Enter your email">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group has-placeholder">
+                                        <label for="">Phone number <span class="required">*</span></label>
+                                        <input type="text" aria-required="true" size="30" required
+                                            value="<%=user.phone%>" name="phone" id="" class="form-control"
+                                            placeholder="Enter your phone number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group has-placeholder">
+                                        <label for="">Company name <span class="required">*</span></label>
+                                        <input type="text" aria-required="true" size="30" required
+                                            value="<%=user.companyName%>" name="company_name" id="" class="form-control"
+                                            placeholder="Enter your company name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group has-placeholder">
+                                        <label for="">Company Address line 1</label>
+                                        <input type="text" aria-required="true" size="40"
+                                            value="<%=user.address.street1%>" name="address_1" id=""
+                                            class="form-control" placeholder="Enter your address line 1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group has-placeholder">
+                                        <label for="">Company Address line 2</label>
+                                        <input type="text" aria-required="true" size="40"
+                                            value="<%=user.address.street2%>" name="address_2" id=""
+                                            class="form-control" placeholder="Enter your address line 1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group has-placeholder">
+                                        <label for="">City</label>
+                                        <input type="text" aria-required="true" size="30" required
+                                            value="<%=user.address.city%>" name="address_city" id=""
+                                            class="form-control" placeholder="Enter your city">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group has-placeholder">
+                                        <label for="">Province</label>
+                                        <input type="text" aria-required="true" size="30" required
+                                            value="<%=user.address.province%>" name="address_province" id=""
+                                            class="form-control" placeholder="Enter your Province">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group has-placeholder">
+                                        <label for="">Code</label>
+                                        <input type="text" aria-required="true" size="30" required
+                                            value="<%=user.address.code%>" name="address_code" id=""
+                                            class="form-control" placeholder="Enter your Code">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group has-placeholder">
+                                        <label for="">Website <span class="required">*</span></label>
+                                        <input type="text" aria-required="true" required value="<%=user.website%>"
+                                            name="website" id="" class="form-control" placeholder="Enter your  website">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group has-placeholder">
+                                        <label for="">Company Registration Number <span
+                                                class="required">*</span></label>
+                                        <input type="text" aria-required="true" size="30" value="<%=user.companyReg%>"
+                                            name="company_reg_no" id="" class="form-control"
+                                            placeholder="Enter your company registration rumber">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group has-placeholder">
+                                        <label for="">Company VAT Number <span class="required">*</span></label>
+                                        <input type="text" aria-required="true" size="30" value="<%=user.vatNumber%>"
+                                            name="vat_number" id="" class="form-control"
+                                            placeholder="Enter your company VAT number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 mb-0 mt-10">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-gradient medium-btn">Save Updates</button>
+                                        <%if (currentUser && currentUser.isAdmin) {%>
+                                            <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
+                                                <button type="button" class="btn btn-outline-darkgrey medium-btn">
+                                                    Delete
+                                                    User</button>
+                                            </form>
+                                            <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="fw-divider-space divider-xl-160 divider-lg-130 divider-md-90 divider-60"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4  col-xl-4 ls"> </div>
+                <!--.col-* -->
+            </div>
+        </div>
+    </section>
+
+
+    <% include ../partials/footer %>

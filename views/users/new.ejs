@@ -1,0 +1,135 @@
+<% include ../partials/header %>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <a title="Back to equipment list" href="/equipment"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="h3 mb-3 font-weight-normal"><i class="fas fa-user-plus fa-2x"></i></h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    New User Account Details :
+                </div>
+                <div class="card-body">
+                    <form action="/users" method="post">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="user-new-username">Username:</label>
+                                <input class="form-control" type="text" name="username" id="user-new-username"
+                                    placeholder="Required field" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="user-new-password">Password:</label>
+                                <input class="form-control" type="password" name="password" id="user-new-password"
+                                    placeholder="Required field" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="user-new-firstname">Name:</label>
+                                <input class="form-control" type="text" name="firstname" id="user-new-firstname"
+                                    placeholder="Required field" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="user-new-lastname">Surname:</label>
+                                <input class="form-control" type="text" name="lastname" id="user-new-lastname"
+                                    placeholder="Required field" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="user-new-email">Email:</label>
+                                <input id="user-new-email" class="form-control" type="email" name="email"
+                                    placeholder="Required field" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="user-new-phone">Phone:</label>
+                                <input id="user-new-phone" class="form-control" type="text" name="phone"
+                                    placeholder="Required field" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user-new-companyName">Company Name:</label>
+                            <input id="user-new-companyName" class="form-control" type="text" name="companyName"
+                                placeholder="Required field" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user-new-addressStreet1">Company Address:</label>
+                            <input id="user-new-addressStreet1" class="form-control" type="text" name="address[street1]"
+                                placeholder="Address line 1">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="address[street2]"
+                                placeholder="Address line 2">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="user-new-addressCity">City:</label>
+                                <input id="user-new-addressCity" class="form-control" type="text" name="address[city]"
+                                    placeholder="">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="user-new-addressProvince">Province:</label>
+                                <input id="user-new-addressProvince" class="form-control" type="text"
+                                    name="address[province]" placeholder="">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="user-new-addressCode">Code:</label>
+                                <input id="user-new-addressCode" class="form-control" type="text" name="address[code]"
+                                    placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user-new-website">Website:</label>
+                            <button type="button" class="btn btn-link py-0" data-toggle="popover"
+                                data-content='e.g. "http://mysite.co.za", "http://site123.com" etc.'
+                                title="Website format"><i class="fas fa-info-circle"></i>
+                                Format</button>
+                            <input id="user-new-website" class="form-control" type="url" name="website" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-new-companyReg">Company Registration Number:</label>
+                            <input id="user-new-companyReg" class="form-control" type="text" name="companyReg"
+                                placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-new-vatNumber">Company VAT Number:</label>
+                            <input id="user-new-vatNumber" class="form-control" type="text" name="vatNumber"
+                                placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-warning btn-block">Sign Up</button>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <input class="form-control" type="password" name="adminCode" placeholder="for admin use">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+</div>
+
+<% include ../partials/footer %>

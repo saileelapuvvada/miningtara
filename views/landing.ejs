@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html>
+<!--<![endif]-->
+
+<head>
+    <title>Mining TARA</title>
+    <meta charset="utf-8">
+    <!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google" content="notranslate">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/animations.css">
+    <link rel="stylesheet" href="/stylesheets/font-awesome5.css">
+    <link rel="stylesheet" href="/stylesheets/icomoon.css">
+    <link rel="stylesheet" href="/stylesheets/main.css" class="color-switcher-link">
+    <link rel="stylesheet" href="/stylesheets/shop.css" class="color-switcher-link">
+    <script src="/scripts/vendor/modernizr-2.6.2.min.js"></script>
+
+    <!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<script src="js/vendor/respond.min.js"></script>
+		<script src="js/vendor/jquery-1.12.4.min.js"></script>
+	<![endif]-->
+
+</head>
+
+<body>
+    <!--[if lt IE 9]>
+		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="color-main">upgrade your browser</a> to improve your experience.</div>
+	<![endif]-->
+
+    <div class="preloader">
+        <div class="preloader_image"></div>
+    </div>
+
+
+    <!-- wrappers for visual page editor and boxed version of template -->
+    <div id="canvas">
+        <div id="box_wrapper">
+
+            <div class="header_absolute">
+
+                <header class="page_header header-1 ds bg-transparent s-py-xl-20 s-py-10 ">
+
+                    <div class="container-fluid">
+
+                        <div class="row d-flex align-items-center justify-content-center">
+                            <div class="col-xl-6 col-md-6 col-12 text-center">
+                                <a href="/" class="logo">
+                                    <img src="images/logo.png" alt="">
+                                    <!--<span class="d-flex flex-column">
+                            <span class="logo-text color-darkgrey">TARA</span>
+                            <span class="logo-subtext">oil & gas industry</span>
+                        </span>-->
+                                </a>
+                            </div>
+                            <div class="col-xl-6 col-1 text-right">
+                                <!-- main nav start -->
+                                <nav class="top-nav">
+                                    <ul class="nav sf-menu">
+
+                                        <li>
+                                            <a href="equipment" class="btn btn-maincolor">Equipment</a>
+                                        </li>
+                                        <li>
+                                            <a href="/">Home</a>
+                                        </li>
+
+                                        
+
+                                        <li>
+                                            <a href="#">About us</a>
+                                        </li>
+                                        <li>
+                                            <a href="contact">Contact</a>
+                                        </li>
+                                        <% if(!currentUser){ %>
+                                            <li>
+                                                <a href="/register">Signup</a>
+                                            </li>
+                                            <li>
+                                                <a href="/login">Login</a>
+                                            </li>
+                                            <% } else { %>
+                                                <%let str=(currentUser && currentUser.isAdmin) ? " (admin)" : "" %>
+                                                    <!--<li class="nav-item"><a href="/logout" class="nav-link">
+                                                            <%= currentUser.username %>
+                                                                <%=str%> Logout
+                                                        </a></li>-->
+                                                        <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+                                            <li class="nav-item"><a href="/logout" class="nav-link"><%= currentUser.username %><%=str%></a></li>
+                                                    <% } %>
+
+
+
+                                                        <!-- contacts -->
+
+                                                        <!-- eof contacts -->
+                                    </ul>
+
+
+                                </nav>
+                                <!-- eof main nav -->
+                            </div>
+                            <!--<div class="col-xl-3 col-md-7 col-12  d-flex justify-content-md-end">
+                    <ul class="top-includes">
+                        <li class="metaphone">
+                            <a href="#">800 123 4567</a>
+                        </li>
+                        <li class="special-menu">
+                            <span class="toggle_menu toggle_menu_side header-slide toggle_menu_side_special"><span></span></span>
+                        </li>
+                    </ul>
+                    
+
+
+                </div>-->
+
+                        </div>
+
+                    </div>
+                    <!-- header toggler -->
+                    <span class="toggle_menu"><span>menu</span></span>
+                </header>
+            </div>
+
+            <section class="page_slider">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li class="ds cover-image">
+                            <img src="images/slide01.jpg" alt="img">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="intro_layers_wrapper">
+                                            <div class="intro_layers">
+                                                <div class="intro_layer">
+                                                    <h6 class="intro_before_featured_word">About TARA</h6>
+                                                    <h2 class="text-capitalize intro_featured_word">
+                                                        Technology Availability Readiness Atlas (TARA)
+                                                    </h2>
+                                                    <a href="#" class="btn btn-outline-darkgrey big-btn">Read more</a>
+                                                    <!--<span class="text-divider">or</span>
+                                        <a href="#" class="btn just-link">Read more</a>-->
+                                                </div>
+                                            </div> <!-- eof .intro_layers -->
+                                        </div> <!-- eof .intro_layers_wrapper -->
+                                    </div> <!-- eof .col-* -->
+                                </div><!-- eof .row -->
+                            </div><!-- eof .container-fluid -->
+                        </li>
+                        <li class="ds cover-image">
+                            <img src="images/slide02.jpg" alt="img">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="intro_layers_wrapper">
+                                            <div class="intro_layers">
+                                                <div class="intro_layer">
+                                                    <h6 class="intro_before_featured_word">Mandela Mining Precinct</h6>
+                                                    <h2 class="text-capitalize intro_featured_word">
+                                                        The Establishment of the Mandela Mining Precinct
+                                                    </h2>
+                                                    <a href="#" class="btn btn-outline-darkgrey big-btn">Read more</a>
+                                                    <!--<span class="text-divider">or</span>
+                                        <a href="#" class="btn just-link">Request a Callback</a>-->
+                                                </div>
+                                            </div> <!-- eof .intro_layers -->
+                                        </div> <!-- eof .intro_layers_wrapper -->
+                                    </div> <!-- eof .col-* -->
+                                </div><!-- eof .row -->
+                            </div><!-- eof .container-fluid -->
+                        </li>
+                        <li class="ds cover-image">
+                            <img src="images/slide03.jpg" alt="img">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="intro_layers_wrapper">
+                                            <div class="intro_layers">
+                                                <div class="intro_layer">
+                                                    <h6 class="intro_before_featured_word">Industry</h6>
+                                                    <h2 class="text-capitalize intro_featured_word">
+                                                        Know How Solutions
+                                                    </h2>
+                                                    <a href="#" class="btn btn-outline-darkgrey big-btn">Read more</a>
+                                                    <!--<span class="text-divider">or</span>
+                                        <a href="#" class="btn just-link">Request a Callback</a>-->
+                                                </div>
+                                            </div> <!-- eof .intro_layers -->
+                                        </div> <!-- eof .intro_layers_wrapper -->
+                                    </div> <!-- eof .col-* -->
+                                </div><!-- eof .row -->
+                            </div><!-- eof .container-fluid -->
+                        </li>
+
+
+                    </ul>
+                </div> <!-- eof flexslider -->
+            </section>
+            <section class="ls ms map-section s-pt-30  s-pb-30">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h2 class="special-heading">
+                                <span class="text-capitalize">
+                                    Subscribe to our Newsletter
+                                </span>
+                            </h2>
+
+                            <p class="special-heading">
+                                <span>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis
+                                    suscipit
+                                    ultrices.
+                                </span>
+                            </p>
+                            <div class="divider-10 hidden-below-lg"></div>
+
+                            <div class="d-flex flex-column justify-content-between flex-wrap ">
+                                <div class="widget widget_mailchimp">
+                                    <form class="signup_landing" action="#">
+                                        <label for="email_landing">
+                                            <span class="screen-reader-text">Subscribe:</span>
+                                        </label>
+                                        <input id="email_landing" name="email" type="email"
+                                            class="form-control mailchimp_email has-placeholder"
+                                            placeholder="Email Address">
+                                        <button type="submit" class="search-submit">
+                                            <span class="screen-reader-text">Subscribe</span>
+                                        </button>
+                                        <div class="response"></div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="divider-40 hidden-above-lg"></div>
+                            <!--<h2 class="special-heading">
+                                                    <span class="text-capitalize">
+                                                        Video 
+                                                    </span>
+                                                </h2>-->
+                            <!-- <div class="media cs  rounded">   -->
+                            <div class="row">
+
+
+                                <div class="col-12">
+                                    <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <div class="card">
+                                                    <div class="row no-gutters">
+                                                        <div class="col-sm-5" style="background: #868e96;"> <img
+                                                                src="images/video_006.png" class="card-img-top h-100"
+                                                                alt="..."> </div>
+                                                        <div class="col-sm-7">
+                                                            <div class="card-body">
+
+                                                                <p class="card-text">Youth Month Media Briefing <br />
+                                                                    <br /></p>
+                                                                <a href="#"
+                                                                    class="btn btn-primary stretched-link video-btn"
+                                                                    data-toggle="modal"
+                                                                    data-src="https://www.youtube.com/embed/A-twOC3W558"
+                                                                    data-target="#myModal">Play Video</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                                            
+                                            <div class="carousel-item">
+                                                <div class="card">
+                                                    <div class="row no-gutters">
+                                                        <div class="col-sm-5" style="background: #868e96;"> <img
+                                                                src="images/video_005.png" class="card-img-top h-100"
+                                                                alt="..."> </div>
+                                                        <div class="col-sm-7">
+                                                            <div class="card-body">
+
+                                                                <p class="card-text">The role of IP and SMEs in taking
+                                                                    ideas to the market</p>
+                                                                <a href="#"
+                                                                    class="btn btn-primary stretched-link video-btn"
+                                                                    data-toggle="modal"
+                                                                    data-src="https://www.youtube.com/watch?v=HFXAxNTaET4"
+                                                                    data-target="#myModal">Play Video</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="card">
+                                                    <div class="row no-gutters">
+                                                        <div class="col-sm-5" style="background: #868e96;"> <img
+                                                                src="images/video_003.png" class="card-img-top h-100"
+                                                                alt="..."> </div>
+                                                        <div class="col-sm-7">
+                                                            <div class="card-body">
+
+                                                                <p class="card-text">Small Wind Power Integration to the
+                                                                    Upper Blinkwater </p>
+                                                                <a href="#"
+                                                                    class="btn btn-primary stretched-link video-btn"
+                                                                    data-toggle="modal"
+                                                                    data-src="https://www.youtube.com/watch?v=sxFUH3hwhuo"
+                                                                    data-target="#myModal">Play Video</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="card">
+                                                    <div class="row no-gutters">
+                                                        <div class="col-sm-5" style="background: #868e96;"> <img
+                                                                src="images/video_004.png" class="card-img-top h-100"
+                                                                alt="..."> </div>
+                                                        <div class="col-sm-7">
+                                                            <div class="card-body">
+
+                                                                <p class="card-text">CSIR hands over TV White Space
+                                                                    Spectrum project to KwaXolo </p>
+                                                                <a href="#"
+                                                                    class="btn btn-primary stretched-link video-btn"
+                                                                    data-toggle="modal"
+                                                                    data-src="https://www.youtube.com/watch?v=bUCuCEQNklI"
+                                                                    data-target="#myModal">Play Video</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="card">
+                                                    <div class="row no-gutters">
+                                                        <div class="col-sm-5" style="background: #868e96;"> <img
+                                                                src="images/video_002.png" class="card-img-top h-100"
+                                                                alt="..."> </div>
+                                                        <div class="col-sm-7">
+                                                            <div class="card-body">
+
+                                                                <p class="card-text">Sustainable integrated security for
+                                                                    the protection </p>
+                                                                <a href="#"
+                                                                    class="btn btn-primary stretched-link video-btn"
+                                                                    data-toggle="modal"
+                                                                    data-src="https://www.youtube.com/watch?v=u_1XehDqZBE"
+                                                                    data-target="#myModal">Play Video</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="card">
+                                                    <div class="row no-gutters">
+                                                        <div class="col-sm-5" style="background: #868e96;"> <img
+                                                                src="images/video_001.png" class="card-img-top h-100"
+                                                                alt="..."> </div>
+                                                        <div class="col-sm-7">
+                                                            <div class="card-body">
+
+                                                                <p class="card-text">Industrialisation opportunities for
+                                                                    South Africa</p>
+                                                                <a href="#"
+                                                                    class="btn btn-primary stretched-link video-btn"
+                                                                    data-toggle="modal"
+                                                                    data-src="https://www.youtube.com/watch?v=3RcAzYILsTQ"
+                                                                    data-target="#myModal">Play Video</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="youtube_arrows"> <a class="mb-3 mr-1" href="#carouselExampleIndicators2"
+                                        role="button" data-slide="prev"> <i class="fa fa-arrow-left"></i> </a> <a
+                                        class="mb-3 " href="#carouselExampleIndicators2" role="button"
+                                        data-slide="next"> <i class="fa fa-arrow-right"></i> </a> </div>
+                                <!--<img class="img-fluid" src="images/video_bg.png" alt="" style="height:100px;">
+                                <div class="media-body">
+                                  <h6>Mining TARA Demo Video (Launch November 2020)</h6>
+                                  <p> Lorem ipsum dolor sit amet, </p>
+                                </div>
+                              </div>-->
+
+                            </div>
+                        </div>
+
+            </section>
+            <section class="ds text-sm-left text-center container-px-0 c-gutter-0">
+                <div class="container-fluid">
+                    <div class="row service-v2">
+                        <div class="col-md-2">
+                            <div class="icon-box service-single with-icon layout2 ds text-center">
+                                <a class="link-icon" href="/equipment?miningCycle=Mine+Development">
+                                    <div class="icon-styled  fs-50">
+                                        <i class="ico ico-refinery"></i>
+                                    </div>
+                                </a>
+                                <a href="/equipment?miningCycle=Mine+Development">
+                                    <h5>
+                                        Mine development
+                                    </h5>
+                                </a>
+
+                                <p>Lorem ipsum dolor amet consectetur</p>
+                                <a class="btn btn-outline-darkgrey" href="/equipment?miningCycle=Mine+Development">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="icon-box service-single with-icon layout2 ds text-center">
+                                <a class="link-icon" href="/equipment?miningCycle=Access+Development">
+                                    <div class="icon-styled  fs-50">
+                                        <i class="ico ico-tank"></i>
+                                    </div>
+                                </a>
+                                <a href="/equipment?miningCycle=Access+Development">
+                                    <h5>
+                                        Access Development
+                                    </h5>
+                                </a>
+
+                                <p>Adipisicing elit, sed do eiusmod tempor</p>
+                                <a class="btn btn-outline-darkgrey" href="/equipment?miningCycle=Access+Development">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="icon-box service-single with-icon layout2 ds text-center">
+                                <a class="link-icon" href="/equipment?miningCycle=Stopping">
+                                    <div class="icon-styled  fs-50">
+                                        <i class="ico ico-oil"></i>
+                                    </div>
+                                </a>
+                                <a href="/equipment?miningCycle=Stopping">
+                                    <h5>
+                                        Stoping
+                                    </h5>
+                                </a>
+
+                                <p>Incididunt labore dolore magna aliqua</p>
+                                <a class="btn btn-outline-darkgrey" href="/equipment?miningCycle=Stopping">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="icon-box service-single with-icon layout2 ds text-center">
+                                <a class="link-icon" href="/equipment?miningCycle=Logistics">
+                                    <div class="icon-styled  fs-50">
+                                        <i class="ico ico-extraction"></i>
+                                    </div>
+                                </a>
+                                <a href="/equipment?miningCycle=Logistics">
+                                    <h5>
+                                        Logistics
+                                    </h5>
+                                </a>
+
+                                <p>Utenim adminim veniam quis nostrud </p>
+                                <a class="btn btn-outline-darkgrey" href="/equipment?miningCycle=Logistics">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="icon-box service-single with-icon layout2 ds text-center">
+                                <a class="link-icon" href="#">
+                                    <div class="icon-styled  fs-50">
+                                        <i class="ico ico-oil-tanker"></i>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <h5>
+                                        Communication
+                                    </h5>
+                                </a>
+
+                                <p>Ullamco laboris nisi ut aliquip veniam exea</p>
+                                <a class="btn btn-outline-darkgrey" href="#">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="icon-box service-single with-icon layout2 ds text-center">
+                                <a class="link-icon" href="#">
+                                    <div class="icon-styled  fs-50">
+                                        <i class="ico ico-pipe"></i>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <h5>
+                                        Others
+                                    </h5>
+                                </a>
+
+                                <p>Commodo conquat duis aute irure dolor</p>
+                                <a class="btn btn-outline-darkgrey" href="#">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </section>
+
+        <!--<section class="ls main-testimonial s-py-xl-160 s-py-lg-130 s-py-md-90 s-py-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-3 text-center">
+                <h2 class="special-heading text-center">
+                    <span class="text-capitalize">
+                        Welcome!
+                    </span>
+                </h2>
+                <div class="divider-30"></div>
+                <a class="btn btn-gradient big-btn" href="#">get a quote</a>
+            </div>
+            <div class="col-12 col-lg-6 text-center">
+                <div class="divider-35 hidden-above-lg"></div>
+                <div class="divider--5"></div>
+                <p class="excerpt">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
+                </p>
+                <p>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum doloreu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in culpa qui officia deserunt mollit animest laborum sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.
+                </p>
+            </div>
+            <div class="col-12 col-lg-3 text-sm-left text-center">
+                <div class="divider-35 hidden-above-lg"></div>
+                <div class="signature">
+                    <div class="signature-image">
+                        <img src="images/team/testimonial2.jpg" alt="">
+                    </div>
+                    <div class="signature-content">
+                        <span>Diana T. Davis</span>
+                        <img src="images/signature.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>-->
+
+        <section class="ls  s-py-xl-160 s-py-lg-130 s-py-md-90 s-py-60 text-sm-left text-center container-px-0">
+            <div class="cover-image s-cover-left">
+                <img src="images/services/service1.jpg" alt="01">
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-12 col-lg-6">
+
+                    </div>
+                    <div class="col-xs-12 col-12 col-lg-6">
+                        <div class="content-center">
+                            <h2 class="special-heading text-sm-left text-center">
+                                <span class="text-capitalize">
+                                    TARA Objectives
+
+                                </span>
+                            </h2>
+                            <div class="divider-45 hidden-below-lg"></div>
+                            <div class="divider-30 hidden-above-lg"></div>
+                            <p>
+                                Cillum doloreu fugiat nulla pariatur excepteur si occaecat cupdatat non proident sunt
+                                culpaq
+                                officia
+                                deserunt mollt animest laborum sed perspiciatis unde omnis iste natus errosit voluptatem
+                                accuantium
+                                doloremque laudantium totam.
+                            </p>
+                            <a class="btn btn-gradient big-btn" href="#">Read More</a>
+                            <div class="divider-45 hidden-below-lg"></div>
+                            <div class="divider-30 hidden-above-lg"></div>
+                            <!--	<ul class="list-styled">
+                        <li>Laudantium, totam rem aperiam</li>
+                        <li>Eaque ipsa quae ab illo inventore veritatis</li>
+                        <li>Quasi architecto beatae</li>
+                    </ul>-->
+                            <div class="divider--10"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ls  s-py-xl-160 s-py-lg-130 s-py-md-90 s-py-60 text-sm-left text-center container-px-0">
+            <div class="cover-image s-cover-right">
+                <img src="images/services/service2.jpg" alt="01">
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-xs-12 col-12 col-lg-6">
+                        <div class="content-center">
+                            <h2 class="special-heading text-sm-left text-center">
+                                <span class="text-capitalize">
+                                    Technology Availability Readiness Atlas (TARA):
+
+                                </span>
+                            </h2>
+                            <div class="divider-45 hidden-below-lg"></div>
+                            <div class="divider-30 hidden-above-lg"></div>
+                            <p>
+                                Rem aperiam, eaque ipsa qillo inventore veritatis etquasi architecto beatae vitae dicta
+                                sunt
+                                explicabo.
+                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia
+                                consequuntur magni
+                                dolores eos.
+                            </p>
+                            <a class="btn btn-gradient big-btn" href="#">Read More</a>
+                            <div class="divider-45 hidden-below-lg"></div>
+                            <div class="divider-30 hidden-above-lg"></div>
+                            <!--<div class="shortcode-widget-area">
+                        <div class="widget widget_mailchimp">
+                            <p>
+                                Subscribe to Our Newsletter:
+                            </p>
+
+                            <form class="signup" action="https://html.modernwebtemplates.com/">
+                                <label for="mailchimp_email88">
+                                    <span class="screen-reader-text">Subscribe:</span>
+                                </label>
+                                <input id="mailchimp_email88" name="email" type="email" class="form-control mailchimp_email has-placeholder" placeholder="Email">
+                                <button type="submit" class="search-submit">
+                                    <span class="screen-reader-text">Subscribe</span>
+                                </button>
+                                <div class="response"></div>
+                            </form>
+                        </div>
+                    </div>-->
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-12 col-lg-6">
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ls  s-py-xl-160 s-py-lg-130 s-py-md-90 s-py-60 text-sm-left text-center container-px-0">
+            <div class="cover-image s-cover-left">
+                <a href="images/services/service3.jpg" class="photoswipe-link side-video" data-width="800"
+                    data-height="800" data-iframe="https://www.youtube.com/embed/GhthHC0s38A"></a>
+                <img src="images/services/service3.jpg" alt="01">
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-12 col-lg-6">
+
+                    </div>
+                    <div class="col-xs-12 col-12 col-lg-6">
+                        <div class="content-center">
+                            <h2 class="special-heading text-sm-left text-center">
+                                <span class="text-capitalize">
+                                    Establishment of Mining Equipment Manufacturers of South Africa (MEMSA):
+                                </span>
+                            </h2>
+                            <div class="divider-45 hidden-below-lg"></div>
+                            <div class="divider-30 hidden-above-lg"></div>
+                            <p>
+                                Qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia
+                                dolor sit amet,
+                                consectetur, adipisci velit, sed quia non numquam. Watch our presentation:
+                            </p>
+                            <a class="btn btn-gradient big-btn" href="#">Read More</a>
+                            <div class="divider-50 hidden-below-lg"></div>
+                            <div class="divider-30 hidden-above-lg"></div>
+                            <!--<div id="comingsoon-countdown"></div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ds s-overlay portfolio-section  s-py-xl-160 s-py-lg-130 s-py-md-90 s-py-60 text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="special-heading text-center">
+                            <span class="text-capitalize">
+                                Equipment
+                            </span>
+                        </h2>
+                        <div class="divider-50 hidden-below-lg"></div>
+                        <div class="divider-30 hidden-above-lg"></div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-xl-8">
+                                <div class="filters gallery-filters">
+                                    <a href="#" data-filter="*" class="active selected">show All</a>
+                                    <a href="#" data-filter=".Drilling">Drilling</a>
+                                    <a href="#" data-filter=".Blasting">Blasting</a>
+                                    <a href="#" data-filter=".Cleaning">Cleaning</a>
+                                    <a href="#" data-filter=".Supporting">Supporting</a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row isotope-wrapper portfolio masonry-layout c-mb-30"
+                            data-filters=".gallery-filters">
+
+                            <% for (let i = 0; i < all.length; i++) { %>
+
+                            <div class="col-xl-4 col-sm-6 <%=all[i].homePageFilter %>">
+
+                                <div class="vertical-item item-gallery content-absolute text-center ds">
+                                    <div class="item-media">
+                                        <img src="<%=all[i].images[0].file %>" alt="img">
+
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="links-wrap">
+                                            <a class="link-zoom photoswipe-link" title=""
+                                                href="<%=all[i].images[0].file %>"></a>
+                                            <a class="link-anchor" title="" href="/equipment/<%=all[i]._id%>"></a>
+                                        </div>
+                                        <h6>
+                                            <a href="#"><%=all[i].name %></a>
+                                        </h6>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <% } %>
+
+
+                        </div>
+                        <div class="mt--30"></div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="divider-60"></div>
+                                <a class="btn btn-maincolor2 big-btn" href="#">All Equipment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container-fluid">
+
+            <section class="customer-logos slider d-flex">
+                <div class="slide"><img
+                        src="https://image.freepik.com/free-vector/luxury-letter-e-logo-design_1017-8903.jpg">
+                </div>
+                <div class="slide"><img src="http://www.webcoderskull.com/img/logo.png"></div>
+                <div class="slide"><img src="https://image.freepik.com/free-vector/3d-box-logo_1103-876.jpg"></div>
+                <div class="slide"><img src="https://image.freepik.com/free-vector/blue-tech-logo_1103-822.jpg"></div>
+                <div class="slide"><img
+                        src="https://image.freepik.com/free-vector/colors-curl-logo-template_23-2147536125.jpg">
+                </div>
+                <div class="slide"><img
+                        src="https://image.freepik.com/free-vector/abstract-cross-logo_23-2147536124.jpg">
+                </div>
+                <div class="slide"><img
+                        src="https://image.freepik.com/free-vector/football-logo-background_1195-244.jpg">
+                </div>
+                <div class="slide"><img
+                        src="https://image.freepik.com/free-vector/background-of-spots-halftone_1035-3847.jpg">
+                </div>
+                <div class="slide"><img
+                        src="https://image.freepik.com/free-vector/retro-label-on-rustic-background_82147503374.jpg">
+                </div>
+            </section>
+
+
+        </div>
+
+        <% include partials/footer%>
+        <!-- Video in Modal --> 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+  
+		
+		<div class="modal-body">
+  
+		 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>        
+		  <!-- 16:9 aspect ratio -->
+  <div class="embed-responsive embed-responsive-16by9">
+	<iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+  </div>
+		  
+		  
+		</div>
+  
+	  </div>
+	</div>
+  </div> 
+  <script>
+
+
+    $(document).ready(function() {
+    // Gets the video src from the data-src on each button
+    var $videoSrc;  
+    $('.video-btn').click(function() {
+        $videoSrc = $(this).data( "src" );
+        //alert($videoSrc);
+        console.log($videoSrc);
+    // when the modal is opened autoplay it  
+    $('#myModal').on('shown.bs.modal', function (e) {    
+    // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
+    $("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" ); 
+    })
+    // stop playing the youtube video when I close the modal
+    $('#myModal').on('hide.bs.modal', function (e) {
+        // a poor man's stop video
+        $("#video").attr('src',$videoSrc); 
+    }) 
+    // document ready  
+    });
+    
+    
+    });
+    
+</script>    
+    

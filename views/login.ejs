@@ -1,0 +1,56 @@
+<% include ./partials/header %>
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form action="/login" method="post">
+                <h1 class="text-center mt-5"><i class="fas fa-user-alt"></i></h1>
+                <legend class="text-center">Please log in</legend>
+                <div class="form-group">
+                    <label for="user-login-username">Username:</label>
+                    <input id="user-login-username" class="form-control" type="text" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="user-login-password">Password:</label>
+                    <input id="user-login-password" class="form-control" type="password" name="password">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block">Login</button>
+                </div>
+            </form>
+            <div class="text-center">
+                <a href="/equipment"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div> -->
+
+<div class="container" style="text-align:center;">
+    <div class="row mt-5">
+        <div style="width: 40%; margin: 20px auto;">
+            <form action="/login" method="post">
+                <h1 class="h3 mb-3 font-weight-normal"><i class="fas fa-user-alt fa-3x .ls h1"></i></h1>
+                <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="password">
+                </div>
+                <div class="form-group text-left">
+                    <button class="btn btn-maincolor medium-btn">Login</button>
+                    <a href="/equipment" class="btn btn-darkgrey medium-btn">Cancel</a>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-md-12 text-left"><a href="/users/forgot">Forgot your password?</a></div>
+            </div>
+            <div class="clear mb-5"></div>
+        </div>
+    </div>
+   
+</div>
+
+<% include ./partials/footer %>

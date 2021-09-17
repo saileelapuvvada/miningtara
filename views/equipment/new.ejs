@@ -1,0 +1,111 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <a href="/equipment"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <form action="/equipment" method="POST">
+                <div class="form-group">
+                    <label for="equipmentName" style="color: gray">Equipment Name:</label>
+                    <input id="equipmentName" class="form-control" type="text" placeholder="Required field"
+                        name="equipment[name]" required>
+                </div>
+                <div class="form-group">
+                    <label for="equipmentType" style="color: gray">Equipment Type:</label>
+                    <input id="equipmentType" class="form-control" type="text" placeholder="Required field"
+                        name="equipment[type]" required>
+                </div>
+                <div class="form-group">
+                    <label for="manufacturer" style="color: gray">Manufacturer:</label>
+                    <input id="manufacturer" class="form-control" type="text" placeholder="Required field"
+                        name="equipment[oem]" required>
+                </div>
+                <div class="form-group">
+                    <label for="description" style="color: gray">Description:</label>
+                    <textarea class="form-control" id="description" rows="5" cols="30" name="equipment[description]"
+                        required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="miningCycle" style="color: gray">Mining Cycle:</label>
+                    <button type="button" class="btn btn-link py-0" data-toggle="popover"
+                        data-content='Recommendations: "Mine Development", "Access Development", "Stoping", "Logistics"'
+                        title="Mining Cycles"><i class="fas fa-info-circle"></i>
+                        Recommendations</button>
+                    <input id="miningCycle" class="form-control" type="text" placeholder="Required field"
+                        name="equipment[miningCycle]" required>
+                </div>
+                <div class="form-group">
+                    <label for="mineActivity" style="color: gray">Mining Activity:</label>
+                    <button type="button" class="btn btn-link py-0" data-toggle="popover"
+                        data-content='Recommendations: "Drilling", "Blasting", "Cleaning", "Supporting", "Services"'
+                        title="Mining Activities"><i class="fas fa-info-circle"></i>
+                        Recommendations</button>
+                    <input id="mineActivity" class="form-control" type="text" placeholder="Required field"
+                        name="equipment[mineActivity]" required>
+                </div>
+                <div class="form-group">
+                    <label for="miningMethod" style="color: gray">Mining Method:</label>
+                    <button type="button" class="btn btn-link py-0" data-toggle="popover"
+                        data-content='Recommendations: "Mechanised", "Conventional", "Hybrid"' title="Mining Method"><i
+                            class="fas fa-info-circle"></i>
+                        Recommendations</button>
+                    <input id="miningMethod" class="form-control" type="text" placeholder="Required field"
+                        name="equipment[miningMethod]" required>
+                </div>
+                <div class="form-group">
+                    <label for="mineral" style="color: gray">Mineral:</label>
+                    <button type="button" class="btn btn-link py-0" data-toggle="popover"
+                        data-content='Recommendations: "Gold", "Platinum", "Coal"' title="Mineral"><i
+                            class="fas fa-info-circle"></i>
+                        Recommendations</button>
+                    <input id="mineral" class="form-control" type="text" placeholder="Required field"
+                        name="equipment[mineral]" required>
+                </div>
+                <div class="form-group">
+                    <label for="trl" style="color: gray">TRL:</label>
+                    <button type="button" class="btn btn-link py-0" data-toggle="popover"
+                        data-content='Please use the string "TRL" followed immediately by a number between 1-9. For example "TRL2", "TRL3", "TRL9 etc. '
+                        title="TRL Format"><i class="fas fa-info-circle"></i>
+                        Format</button>
+                    <button type="button" class="btn btn-link py-0" data-toggle="popover"
+                        data-img="/ui/images/default/nasa-trl-meter.png" title="TRL Chart"><i
+                            class="fas fa-info-circle"></i> TRL Reference Chart
+                    </button>
+                    <input id="trl" class="form-control" type="text" placeholder="" name="equipment[trl]"
+                        pattern="^TRL[1-9]$" title="Format e.g. TRL1, TRL2, TRL9...">
+                </div>
+                <div class="form-group">
+                    <label for="oreLocation" style="color: gray">Ore Location:</label>
+                    <input id="oreLocation" class="form-control" type="text" placeholder=""
+                        name="equipment[oreLocation]">
+                </div>
+                <div class="form-group">
+                    <label for="rockHardness" style="color: gray">Rock Hardness:</label>
+                    <input id="rockHardness" class="form-control" type="text" placeholder=""
+                        name="equipment[rockHardness]">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-default btn-block btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+<% include ../partials/footer %>

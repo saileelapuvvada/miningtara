@@ -1,0 +1,192 @@
+<% include ../partials/header %>
+
+<% if(user){%>
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <a href="/users"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="h3 mb-3 font-weight-normal"><i class="far fa-id-card fa-2x"></i></h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    Account Details : <strong><%=user.firstname%> <%=user.lastname%></strong>
+                </div>
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="user-show-username">Username:</label>
+                            <input class="form-control" type="text" id="user-show-username" value="<%=user.username%>"
+                                readonly>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="user-show-status">Status:</label>
+                            <input class="form-control" type="text" id="user-show-status" value="<%=user.status%>"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="user-show-firstname">Name:</label>
+                            <input class="form-control" type="text" id="user-show-firstname" value="<%=user.firstname%>"
+                                readonly>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="user-show-lastname">Surname:</label>
+                            <input class="form-control" type="text" id="user-show-lastname" value="<%=user.lastname%>"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="user-show-email">Email:</label>
+                            <input class="form-control" type="text" id="user-show-email" value="<%=user.email%>"
+                                readonly>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="user-show-phone">Phone:</label>
+                            <input class="form-control" type="text" id="user-show-phone" value="<%=user.phone%>"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-show-company">Company Name:</label>
+                        <input class="form-control" type="text" id="user-show-company" value="<%=user.companyName%>"
+                            readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-show-addressStreet1">Company Address:</label>
+                        <input class="form-control" type="text" id="user-show-addressStreet1"
+                            value="<%=user.address.street1%>" readonly>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" id="user-show-addressStreet2"
+                            value="<%=user.address.street2%>" readonly>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="user-show-addressCity">City:</label>
+                            <input class="form-control" type="text" id="user-show-addressCity"
+                                value="<%=user.address.city%>" readonly>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="user-show-addressProvince">Province:</label>
+                            <input class="form-control" type="text" id="user-show-addressProvince"
+                                value="<%=user.address.province%>" readonly>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="user-show-addressCode">Code:</label>
+                            <input class="form-control" type="text" id="user-show-addressCode"
+                                value="<%=user.address.code%>" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-show-website">Website:</label>
+                        <input class="form-control" type="text" id="user-show-website" value="<%=user.website%>"
+                            readonly>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="user-show-companyReg">Company Registration Number:</label>
+                            <input class="form-control" type="text" id="user-show-companyReg"
+                                value="<%=user.companyReg%>" readonly>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="user-show-vatNumber">Company VAT Number:</label>
+                            <input class="form-control" type="text" id="user-show-vatNumber" value="<%=user.vatNumber%>"
+                                readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+    <% if(equipment && equipment.length > 0) { %>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="card mt-3">
+                <div class="card-header bg-dark text-white">
+                    Equipment Added by : <strong><%=user.firstname%> <%=user.lastname%></strong>
+                </div>
+                <div class="card-body p-0">
+
+                    <table class="table table-striped table-bordered table-hover m-0 p-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Manufacturer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let i = 0; i < equipment.length; i++) { %>
+                            <tr>
+                                <th scope="row"><%=i+1%></th>
+                                <td><a href="/equipment/<%=equipment[i]._id%>"><%=equipment[i].name%></a></td>
+                                <td><%=equipment[i].type%></td>
+                                <td><%=equipment[i].oem%></td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <% } %>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4 my-3">
+            <a class="btn btn-primary btn-block" href="/users/<%=user._id%>/edit"><i class="fas fa-user-edit"></i>
+                Edit Details</a>
+        </div>
+        <div class="col-md-4 my-3">
+            <a class="btn btn-primary btn-block" href="/users/forgot"><i class="fas fa-key"></i> Reset Password</a>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+</div>
+
+<% } else { %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <a href="/users"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="h3 mb-3 font-weight-normal"><i class="far fa-id-card fa-2x"></i><i class="fas fa-question"></i>
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>No details found for the selected user</h1>
+        </div>
+    </div>
+</div>
+
+<% } %>
+
+<% include ../partials/footer %>

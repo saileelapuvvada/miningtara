@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TARA</title>
+    <!-- BOOTSTRAP 4 CDN (last checked 17 May 2019) -->
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/animations.css">
+    <link rel="stylesheet" href="/stylesheets/font-awesome5.css">
+    <link rel="stylesheet" href="/stylesheets/icomoon.css">
+    <link rel="stylesheet" href="/stylesheets/main.css" class="color-switcher-link">
+    <link rel="stylesheet" href="/stylesheets/shop.css" class="color-switcher-link">
+    <script src="/scripts/vendor/modernizr-2.6.2.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/all.min.css">
+    <!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<script src="js/vendor/respond.min.js"></script>
+		<script src="js/vendor/jquery-1.12.4.min.js"></script>
+	<![endif]-->
+    <script src="/scripts/all.min.js"></script>
+
+    <!-- Remove it -->
+    <style>
+        .accordion {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .accordion__title {
+
+            font-weight: 300;
+            color: #000;
+            text-transform: uppercase;
+            font-size: 1.125em;
+        }
+
+        .accordion__list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .accordion__item {
+
+            visibility: hidden;
+        }
+
+        .accordion__item:last-child {
+            border-bottom: 0;
+        }
+
+        .accordion__item.is-active .accordion__itemTitleWrap::after {
+            -webkit-transform: translateX(-20%);
+            transform: translateX(-20%);
+        }
+
+        .accordion__item.is-active .accordion__itemIconWrap {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+        .accordion__itemTitleWrap {
+            display: flex;
+            height: 2.5em;
+            align-items: center;
+            padding: 0 1em;
+            color: #fff;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .accordion__itemTitleWrap::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: #fff;
+            /* background: linear-gradient(45deg, #3bade3 0%, #576fe6 25%, #9844b7 51%, #ff357f 100%);*/
+            z-index: 1;
+            transition: -webkit-transform .4s ease;
+            transition: transform .4s ease;
+            transition: transform .4s ease, -webkit-transform .4s ease;
+        }
+
+        .accordion__itemTitleWrap.is-active::after,
+        .accordion__itemTitleWrap:hover::after {
+            -webkit-transform: translateX(-20%);
+            transform: translateX(-20%);
+        }
+
+        .accordion__itemIconWrap {
+            width: 1.25em;
+            height: 1.25em;
+            margin-left: auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .accordion__itemTitle {
+            margin: 0;
+            font-family: 'industry', sans-serif;
+            font-weight: 300;
+            font-size: 1em;
+            position: relative;
+            z-index: 10;
+            color: #000;
+        }
+
+        .accordion__itemContent {
+            font-size: 0.875em;
+            height: 0;
+            overflow: hidden;
+            background-color: #fff;
+
+        }
+
+        .accordion__itemContent p {
+            margin: 2em 0;
+        }
+
+        /*
+.card-img-top {
+box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}*/
+        .card-body {
+            text-align: center;
+            box-shadow: 0px 15px 15px -8px rgba(0, 0, 0, 0.5)
+        }
+
+        .card-body h6 {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: deeppink;
+        }
+
+        .card-title {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 24px;
+            color: #09445a;
+        }
+
+        @media (max-width: 800px) {
+            .mx-30 {
+                margin-bottom: 30px;
+            }
+        }
+
+        .card-body .form-check {
+            position: absolute;
+            left: 0;
+            bottom: 1%;
+        }
+
+        .card-body .form-check label {
+            font-size: 14px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .form-check-label {
+            font-size: 12px !important;
+            color: #09445a !important;
+        }
+
+        input[type=checkbox]+label:before {
+            border: 1px solid #09445a !important;
+
+        }
+    </style>
+    <!--  -->
+</head>
+
+<body>
+    <!--topline section visible only on small screens|-->
+    <div id="canvas">
+
+        <div id="box_wrapper">
+
+            <div class="header" style="background-color:#09445a">
+
+                <header class="page_header header-1 ds">
+
+                    <div class="container-fluid">
+
+                        <div class="row d-flex align-items-center justify-content-center">
+                            <div class="col-xl-4 col-md-4 col-12 text-center">
+                                <a href="/" class="logo">
+                                    <img src="/images/logo.png" alt="">
+                                    <!--<span class="d-flex flex-column">
+										<span class="logo-text color-darkgrey">TARA</span>
+										<span class="logo-subtext">oil & gas industry</span>
+									</span>-->
+                                </a>
+                            </div>
+                            <div class="col-xl-8 col-1 text-right">
+                                <!-- main nav start -->
+                                <nav class="top-nav">
+                                    <ul class="nav sf-menu">
+                                        <li>
+                                            <a href="/equipment" class="btn btn-maincolor">Equipment</a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="/">Home</a>
+                                        </li>          
+                                        <li>
+                                            <a href="#">About us</a>
+                                        </li>
+                                        <li>
+                                            <a href="/contact">Contact</a>
+                                        </li>
+                                        <% if(!currentUser){ %>
+                                            <li>
+                                                <a href="/register">Signup</a>
+                                            </li>
+                                            <li>
+                                                <a href="/login">Login</a>
+                                            </li>
+                                            <% } else { %>
+                                            <%let str = (currentUser && currentUser.isAdmin) ? " (admin)" : "" %>
+                                            
+                                            <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+                                            <li class="nav-item"><a href="/logout" class="nav-link"><%= currentUser.username %><%=str%></a></li>
+                                        <% } %>
+                                        
+                                        <!-- contacts -->
+
+                                        <!-- eof contacts -->
+                                    </ul>
+                                </nav>
+                                <!-- eof main nav -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- header toggler -->
+                    <span class="toggle_menu"><span>menu</span></span>
+                </header>
+            </div>
+            <% if(error && error.length > 0){ %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%=error%>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <% } %>
+                <% if(success && success.length > 0){ %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <%=success%>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <% } %>
+            <div class="clear" style="margin-top:20px"></div>

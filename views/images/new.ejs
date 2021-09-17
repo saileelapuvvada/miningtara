@@ -1,0 +1,51 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row" style="margin: 100px auto;">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form action="/equipment/<%=equipment._id%>/images" method="POST" enctype="multipart/form-data">
+                <div class="text-center mb-3">
+                    <span><i class="fas fa-plus fa-1x" style="color: gray"></i> <i class="far fa-images fa-3x"
+                            style="color: gray"></i></span>
+                </div>
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                aria-describedby="inputGroupFileAddon01" name="imageFile" accept="image/*" required
+                                onchange="ValidateImageFileSize(this)" readonly>
+                            <label class="custom-file-label" for="inputGroupFile01"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-file-upload"></i>
+                        Submit</button>
+                </div>
+            </form>
+            <div class="text-center">
+                <a href="/equipment/<%=equipment._id%>/edit"><i class="fas fa-arrow-circle-left fa-3x"></i></a>
+            </div>
+            <br>
+            <br>
+            <div>
+                <p>
+                    <em>We recommend the following specifications when uploading your images onto TARA:</em>
+                    <ul>
+                        <li><em>Maximum image size: 1mb</em></li>
+                        <li><em>Aspect Ratio: 16:10. For example 720 x 450, 1440 x 900 etc.</em></li>
+                        <li><em>Please double-check on the equipment page that your image displays correctly after
+                                uploading.</em></li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

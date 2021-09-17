@@ -1,0 +1,385 @@
+<% include ../partials/header %>
+    <section class="ls s-pt-xl-160 s-pt-lg-130 s-pb-lg-100 s-py-md-90 s-py-60 c-gutter-30">
+        <div class="container">
+            <div class="row">
+
+
+                <main class="col-lg-12 col-xl-12">
+                    <div class="product type-product ">
+
+                        <div class="images" data-columns="4">
+                            <figure>
+                                <% equipment.images.forEach(function(image){ %>
+                                    <div data-thumb="<%=image.file%>">
+                                        <a href="<%=image.file%>">
+                                            <img src="<%=image.file%>" alt="" data-caption="" data-src="<%=image.file%>"
+                                                data-large_image="<%=image.file%>" data-large_image_width="1000"
+                                                data-large_image_height="1000">
+                                        </a>
+                                    </div>
+                                    <% }) %>
+
+                            </figure>
+                        </div>
+
+                        <div class="summary entry-summary">
+
+                            <h1 class="product_title entry-title">Rocprop</h1>
+                            <!--<div class="woocommerce-product-rating">
+                                          <div class="star-rating">
+                                              <span style="width:72.6%">Rated <strong class="rating">4.33</strong> out of 5 based on <span class="rating">3</span> customer ratings</span>
+                                          </div>
+  
+                                          <a href="#reviews" class="woocommerce-review-link" rel="nofollow">(<span class="count">3</span> customer
+                                              reviews)</a>
+                                      </div>-->
+
+
+                            <div>
+                                <h6 class="mb-2">Supplier Information</h6>
+                                <p><span class="strong">Name: </span>
+                                    <%=user.companyName%>
+                                        <br><span class="strong">Contact: </span>
+                                        <%=user.firstname + user.lastname%>
+                                            <br><span class="strong">Phone: </span>
+                                            <%=user.phone%>
+                                                <br><span class="strong">Email: </span><a
+                                                    href="mailto:christiann@msp.co.za" class="btn-link mb-0 pl-0">
+                                                    <%=user.email%>
+                                                </a>
+                                                <br><span class="strong">Website: </span><a href="https://msp.co.za"
+                                                    target="blank" class="btn-link mb-0 pl-0">
+                                                    <%=user.website%>
+                                                </a>
+                                                <br><span class="strong">Address: </span>
+                                                <%=user.address.street1 + ", " + user.address.street2 + ", " +
+                                                    user.address.city + ", " + user.address.province + ", " +
+                                                    user.address.code%>
+                                </p>
+
+                            </div>
+                            <div class="mt-3">
+                                <h6 class="mb-2">Datasheets</h6>
+                                <% equipment.datasheets.forEach(function(datasheet){ %>
+                                    <span class="strong">PDF: </span><a href="<%=datasheet.file%>" target="blank"
+                                        class="btn-link mb-0 pl-0">
+                                        <%=datasheet.filename%>
+                                    </a>
+                                    <% }) %>
+                            </div>
+                            <% if(currentUser && equipment.author.id.equals(currentUser._id) || currentUser &&
+                                currentUser.isAdmin){ %>
+                                <div class="container">
+                                    <a href="/equipment/<%=equipment._id%>/edit" class="btn btn-link"><i
+                                            class="far fa-edit"></i> Edit
+                                        Equipment</a>
+                                </div>
+                            <% } %>
+
+
+                        </div>
+                        <!-- .summary -->
+
+                        <!--
+          IF WE WANT to create bootstrap tabs:
+          in WordPress theme We shall override tabs template
+          adding 'nav nav-tabs' to 'ul.tabs'
+          adding 'nav-item' to 'li'
+          adding 'nav-link' to 'a'
+          wrap all tabs to tab-content
+          but .active is turns not on A but on LI, not as in bootstrap
+      -->
+                        <div class="clear"></div>
+                        <div id="accordion01" role="tablist">
+                            <div class="card">
+                                <div class="card-header" role="tab" id="collapse01_header">
+                                    <h5>
+                                        <a data-toggle="collapse" href="#" data-target="#collapse01"
+                                            aria-expanded="false" aria-controls="collapse01">
+                                            Specifications
+                                        </a>
+                                    </h5>
+                                </div>
+
+                                <div id="collapse01" class="collapse show" role="tabpanel"
+                                    aria-labelledby="collapse01_header" data-parent="#accordion01">
+                                    <div class="card-body">
+                                        <table class="shop_attributes">
+
+
+                                            <tbody>
+                                                <tr>
+                                                    <th style="width:25%;">Type</th>
+                                                    <td>
+                                                        <p>
+                                                            <%=equipment.type%>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>OEM</th>
+                                                    <td>
+                                                        <p>
+                                                            <%=equipment.oem%>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>TRL</th>
+                                                    <td>
+                                                        <p>
+                                                            <%=equipment.trl%>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Mining Cycle</th>
+                                                    <td>
+                                                        <p>
+                                                            <%=equipment.miningCycle%>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Mining Activity</th>
+                                                    <td>
+                                                        <p>
+                                                            <%=equipment.mineActivity%>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Mining Method</th>
+                                                    <td>
+                                                        <p>
+                                                            <%=equipment.miningMethod%>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Mineral</th>
+                                                    <td>
+                                                        <p>
+                                                            <%=equipment.mineral%>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Ore Location</th>
+                                                    <td>
+                                                        <p>
+                                                            <%=equipment.oreLocation%>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Rock Hardness</th>
+                                                    <td>
+                                                        <p>
+                                                            <%=equipment.rockHardness%>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" role="tab" id="collapse02_header">
+                                    <h5>
+                                        <a class="collapsed" data-toggle="collapse" href="#" data-target="#collapse02"
+                                            aria-expanded="false" aria-controls="collapse02">
+                                            Additional information
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapse02" class="collapse" role="tabpanel"
+                                    aria-labelledby="collapse02_header" data-parent="#accordion01">
+                                    <div class="card-body">
+                                        <table class="shop_attributes">
+                                            <tbody>
+                                                <tr>
+                                                    <th>Color</th>
+                                                    <td>
+                                                        <p>Blue</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Size</th>
+                                                    <td>
+                                                        <p>X Small, Small, Medium, Large, X Large, XX Large, XXX Large
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" role="tab" id="collapse03_header">
+                                    <h5>
+                                        <a class="collapsed" data-toggle="collapse" data-target="#collapse03" href="#"
+                                            aria-expanded="false" aria-controls="collapse03">
+                                            Other information
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapse03" class="collapse" role="tabpanel"
+                                    aria-labelledby="collapse03_header" data-parent="#accordion01">
+                                    <div class="card-body">
+                                        <table class="shop_attributes">
+                                            <tbody>
+                                                <tr>
+                                                    <th>Color</th>
+                                                    <td>
+                                                        <p>Blue</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Size</th>
+                                                    <td>
+                                                        <p>X Small, Small, Medium, Large, X Large, XX Large, XXX Large
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <section class="related products">
+
+                            <h2>Related products</h2>
+
+                            <ul class="products ">
+                                <li class="product">
+                                    <div class="product-inner">
+                                        <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                            href="shop-product-right.html">
+                                            <img src="images/equipments/a.png" alt="">
+                                        </a>
+                                        <h2 class="woocommerce-loop-product__title"><a
+                                                class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                                href="shop-product-right.html">Rocprop</a></h2>
+                                        <p>The award winning Rocprop, widely acknowledged by mining houses around the
+                                            world</p>
+                                        <!--<a rel="nofollow" href="shop-cart.html" class="button product_type_simple add_to_cart_button"><i class="fas fa-shopping-bag"></i></a>-->
+                                        <a href="cart.html" class="added_to_cart wc-forward" title="View more">View
+                                            more</a>
+                                    </div>
+                                </li>
+                                <li class="product">
+                                    <div class="product-inner">
+                                        <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                            href="shop-product-right.html">
+                                            <img src="images/equipments/b.png" alt="">
+                                        </a>
+                                        <h2 class="woocommerce-loop-product__title"><a
+                                                class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                                href="shop-product-right.html">Cheetah Aluminium Pinch Bar</a></h2>
+                                        <p>The award winning Rocprop, widely acknowledged by mining houses around the
+                                            world</p>
+                                        <!--<a rel="nofollow" href="shop-cart.html" class="button product_type_simple add_to_cart_button"><i class="fas fa-shopping-bag"></i></a>-->
+                                        <a href="cart.html" class="added_to_cart wc-forward" title="View more">View
+                                            more</a>
+                                    </div>
+                                </li>
+                                <li class="product">
+                                    <div class="product-inner">
+                                        <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                            href="shop-product-right.html">
+                                            <img src="images/equipments/c.jpg" alt="">
+                                        </a>
+                                        <h2 class="woocommerce-loop-product__title"><a
+                                                class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                                href="shop-product-right.html">Blasthole Cleaner, Desludger</a></h2>
+                                        <p>The award winning Rocprop, widely acknowledged by mining houses around the
+                                            world</p>
+
+                                        <!--<a rel="nofollow" href="shop-cart.html" class="button product_type_simple add_to_cart_button"><i class="fas fa-shopping-bag"></i></a>-->
+                                        <a href="cart.html" class="added_to_cart wc-forward" title="View more">View
+                                            more</a>
+                                    </div>
+                                </li>
+
+                                <li class="product">
+                                    <div class="product-inner">
+                                        <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                            href="shop-product-right.html">
+                                            <img src="images/equipments/d.jpg" alt="">
+                                        </a>
+                                        <h2 class="woocommerce-loop-product__title"><a
+                                                class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                                href="shop-product-right.html">Hydropowered or Water Rockdrill</a></h2>
+                                        <p>The award winning Rocprop, widely acknowledged by mining houses around the
+                                            world</p>
+                                        <!--<a rel="nofollow" href="shop-cart.html" class="button product_type_simple add_to_cart_button"><i class="fas fa-shopping-bag"></i></a>-->
+                                        <a href="cart.html" class="added_to_cart wc-forward" title="View more">View
+                                            more</a>
+                                    </div>
+                                </li>
+                                <li class="product">
+                                    <div class="product-inner">
+                                        <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                            href="shop-product-right.html">
+                                            <img src="images/equipments/e.png" alt="">
+                                        </a>
+                                        <h2 class="woocommerce-loop-product__title"><a
+                                                class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                                href="shop-product-right.html">Wide Tunnel Drilling Rig</a></h2>
+                                        <p>The award winning Rocprop, widely acknowledged by mining houses around the
+                                            world</p>
+                                        <!--<a rel="nofollow" href="shop-cart.html" class="button product_type_simple add_to_cart_button"><i class="fas fa-shopping-bag"></i></a>-->
+                                        <a href="cart.html" class="added_to_cart wc-forward" title="View more">View
+                                            more</a>
+                                    </div>
+                                </li>
+                                <li class="product">
+                                    <div class="product-inner">
+                                        <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                            href="shop-product-right.html">
+                                            <img src="images/equipments/f.jpg" alt="">
+                                        </a>
+                                        <h2 class="woocommerce-loop-product__title"><a
+                                                class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
+                                                href="shop-product-right.html">Hydropowered Chainsaw</a></h2>
+                                        <p>The award winning Rocprop, widely acknowledged by mining houses around the
+                                            world</p>
+                                        <!--<a rel="nofollow" href="shop-cart.html" class="button product_type_simple add_to_cart_button"><i class="fas fa-shopping-bag"></i></a>-->
+                                        <a href="cart.html" class="added_to_cart wc-forward" title="View more">View
+                                            more</a>
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                        </section>
+
+
+                    </div>
+                    <!-- #product-22 -->
+
+
+                </main>
+
+                <!--<aside class="col-lg-5 col-xl-3">
+  
+                              
+  
+                          </aside>-->
+
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <% include ../partials/footer %>

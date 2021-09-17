@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+
+<div class="container" style="text-align:center;">
+    <div class="row mt-5">
+        <div class="col-md-12 text-center">
+            <p>Please enter the email where instructions to reset the password will be sent</p>
+        </div>
+    </div>
+    <div class="row">
+        <div style="width: 40%; margin: 70px auto;">
+            <form action="/users/forgot" method="POST">
+                <h1 class="h3 mb-3 font-weight-normal"><i class="fas fa-user-alt fa-2x"></i></h1>
+                <h1 class="h3 mb-3 font-weight-normal">Password Reset</h1>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" autofocus placeholder="email">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Send Reset Instructions</button>
+                </div>
+            </form>
+            <a href="/equipment"><i class="fas fa-arrow-circle-left fa-3x"></i></a>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

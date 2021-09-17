@@ -1,0 +1,60 @@
+<% include ../partials/header %>
+
+<!-- <div class="container" style="text-align:center;">
+    <div class="row">
+        <div style="width: 40%; margin: 100px auto;">
+            <form action="/equipment/<%=equipment_id%>/datasheets/<%=datasheet._id%>?_method=PUT" method="POST"
+                enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="mb-3" for="exampleFormControlFile1"><i class="fas fa-sync fa-1x"
+                            style="color: gray"></i> <i class="far fa-file-pdf fa-3x" style="color: gray"></i></label>
+                    <input class="form-control-file border rounded border-primary" type="file"
+                        id="exampleFormControlFile1" name="datasheetFile" accept="application/pdf" required>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-default btn-block btn-primary"><i class="fas fa-file-upload"></i>
+                        Submit</button>
+                </div>
+            </form>
+            <a href="/equipment/<%=equipment_id%>/edit"><i class="fas fa-arrow-circle-left fa-3x"></i></a>
+        </div>
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="row" style="margin: 100px auto;">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form action="/equipment/<%=equipment_id%>/datasheets/<%=datasheet._id%>?_method=PUT" method="POST"
+                enctype="multipart/form-data">
+                <div class="text-center mb-3">
+                    <span><i class="fas fa-sync fa-1x" style="color: gray"></i> <i class="far fa-file-pdf fa-3x"
+                            style="color: gray"></i></span>
+                </div>
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                aria-describedby="inputGroupFileAddon01" name="datasheetFile" accept="application/pdf"
+                                required onchange="ValidateDatasheetFileSize(this)" readonly>
+                            <label class="custom-file-label" for="inputGroupFile01"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-file-upload"></i>
+                        Submit</button>
+                </div>
+            </form>
+            <div class="text-center">
+                <a href="/equipment/<%=equipment_id%>/edit"><i class="fas fa-arrow-circle-left fa-3x"></i></a>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

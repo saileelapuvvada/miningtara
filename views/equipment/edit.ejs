@@ -1,0 +1,337 @@
+<% include ../partials/header %>
+
+<div class="container">
+
+    <div><img src="/ui/images/default/banner.png" class="img-fluid  mb-3" alt="Responsive image"></div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+
+                <div class="card-header bg-dark text-white">
+                    Supplier
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><%=user.companyName%></h5>
+                    <p class="card-text mb-0">Contact: <%=user.firstname%> <%=user.lastname%></p>
+                    <p class="card-text mb-0">Phone: <%=user.phone%></p>
+                    <p class="card-text mb-0">Email:<a href="mailto:<%=user.email%>"
+                            class="btn btn-link mb-0"><%=user.email%></a>
+                    </p>
+                    <p class="card-text mb-0">Address: <%=user.address.street1%>, <%=user.address.street2%>,
+                        <%=user.address.city%>,
+                        <%=user.address.province%>, <%=user.address.code%></p>
+                </div>
+
+
+            </div>
+
+            <div class="text-center mb-3">
+
+                <% if(equipment.datasheets.length < 3 || currentUser && currentUser.isAdmin) { %>
+                <a class="btn btn-link text-center" href="/equipment/<%=equipment._id%>/datasheets/new"><i
+                        class="fas fa-plus"></i>
+                    Add Datasheet</a>
+                <% } else { %>
+                <a class="btn btn-link text-center disabled" href=""><i class="fas fa-plus"></i>
+                    Add Datasheet</a>
+                <% } %>
+
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    Datasheets
+                </div>
+                <div class="card-body">
+                    <%equipment.datasheets.forEach(function(datasheet){%>
+
+                    <div class="row mb-3">
+                        <div class="col-md-1">
+                            <a class="btn btn-link py-0 px-0"
+                                href="/equipment/<%=equipment._id%>/datasheets/<%=datasheet._id%>/edit"><i
+                                    class="far fa-edit"></i></a>
+                        </div>
+
+                        <div class="col-md-9 text-center py-0 px-0">
+                            <a href="<%=datasheet.file%>"><%=datasheet.filename%></a>
+                        </div>
+
+                        <div class="col-md-1">
+                            <form action="/equipment/<%=equipment._id%>/datasheets/<%=datasheet._id%>?_method=DELETE"
+                                method="POST">
+                                <button class="btn btn-link py-0 px-0"><i class="far fa-trash-alt"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+
+            <div class="text-center my-3">
+                <a class="btn-lg btn-link delete-form" href="/equipment/<%=equipment._id%>"><i
+                        class="fas fa-arrow-circle-left fa-2x"></i></a>
+            </div>
+
+            <div class="my-3">
+                <p>
+                    <em>Note: When adding features or specifications, if you do not see your entry after adding it,
+                        please refresh your browser.</em>
+                </p>
+            </div>
+
+        </div>
+        <div class="col-md-8 mb-5">
+
+            <div class="card">
+
+                <div class="card-header bg-dark text-white"><em>Editing</em> <%=equipment.name%></div>
+
+                <% if(equipment.images.length < 3 || currentUser && currentUser.isAdmin) { %>
+                <a class="btn btn-link" href="/equipment/<%=equipment._id%>/images/new"><i class="fas fa-plus"></i>
+                    Add Image</a>
+                <% } else { %>
+                <a class="btn btn-link disabled" href=""><i class="fas fa-plus"></i>
+                    Add Image</a>
+                <% } %>
+
+                <div class="row">
+                    <%equipment.images.forEach(function(image){%>
+                    <div class="col-md-12">
+                        <img src="<%=image.file%>" onerror="this.src='/ui/images/default/unavailable-image.png'"
+                            class="card-img-top border-secondary" alt="<%=equipment.name%>">
+                        <div class="float-right">
+                            <a class="btn btn-link delete-form"
+                                href="/equipment/<%=equipment._id%>/images/<%=image._id%>/edit"><i
+                                    class="far fa-edit"></i>Edit Image</a>
+                            <form class="delete-form"
+                                action="/equipment/<%=equipment._id%>/images/<%=image._id%>?_method=DELETE"
+                                method="POST">
+                                <button class="btn btn-link "><i class="far fa-trash-alt"></i>Delete Image</button>
+                            </form>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+
+                <form action="/equipment/<%=equipment._id%>?_method=PUT" method="POST">
+                    <table class="table table-striped pb-0 mb-0">
+                        <thead class="thead-dark">
+                            <tr class="d-flex">
+                                <th class="col-sm-12" scope="col">Specifications</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="d-flex">
+                                <th class="col-sm-3" scope="row">Name:</th>
+                                <td class="col-sm-9"><input class="form-control" type="text" value="<%=equipment.name%>"
+                                        name="equipment[name]" required /></td>
+                            </tr>
+                            <tr class="d-flex">
+                                <th class="col-sm-3" scope="row">Type:</th>
+                                <td class="col-sm-9"><input class="form-control" type="text" value="<%=equipment.type%>"
+                                        name="equipment[type]" required /></td>
+                            </tr>
+                            <tr class="d-flex">
+                                <th class="col-sm-3" scope="row">OEM:</th>
+                                <td class="col-sm-9"><input class="form-control" type="text" value="<%=equipment.oem%>"
+                                        name="equipment[oem]" required /></td>
+                            </tr>
+                            <tr class="d-flex">
+                                <th class="col-sm-3" scope="row">TRL:
+                                    <button type="button" class="btn btn-link py-0" data-toggle="popover"
+                                        data-content='Please use the string "TRL" followed immediately by a number between 1-9. For example "TRL2", "TRL3", "TRL9 etc. '
+                                        title="TRL Format"><i class="fas fa-info-circle"></i>
+                                        Format</button>
+                                </th>
+                                <td class="col-sm-7"><input class="form-control" type="text" value="<%=equipment.trl%>"
+                                        name="equipment[trl]" pattern="^TRL[1-9]$"
+                                        title="Format e.g. TRL1, TRL2, TRL9..." />
+                                </td>
+                                <td class="col-sm-2">
+                                    <button type="button" class="btn btn-link py-0" data-toggle="popover"
+                                        data-img="/ui/images/default/nasa-trl-meter.png" title="TRL Chart"><i
+                                            class="fas fa-info-circle"></i> Ref.
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class=" d-flex">
+                                <th class="col-sm-3" scope="row">Mining Cycle:<button type="button"
+                                        class="btn btn-link py-0" data-toggle="popover"
+                                        data-content='Recommendations: "Mine Development", "Access Development", "Stoping", "Logistics"'
+                                        title="Mining Cycles"><i class="fas fa-info-circle"></i>
+                                    </button>
+                                </th>
+                                <td class="col-sm-9"><input class="form-control" type="text"
+                                        value="<%=equipment.miningCycle%>" name="equipment[miningCycle]" required />
+                                </td>
+                            </tr>
+                            <tr class="d-flex">
+                                <th class="col-sm-3" scope="row">Mining Activity:<button type="button"
+                                        class="btn btn-link py-0" data-toggle="popover"
+                                        data-content='Recommendations: "Drilling", "Blasting", "Cleaning", "Supporting", "Services"'
+                                        title="Mining Activities"><i class="fas fa-info-circle"></i>
+                                    </button>
+                                </th>
+                                <td class="col-sm-9"><input class="form-control" type="text"
+                                        value="<%=equipment.mineActivity%>" name="equipment[mineActivity]" required />
+                                </td>
+                            </tr>
+                            <tr class="d-flex">
+                                <th class="col-sm-3" scope="row">Mining Method:<button type="button"
+                                        class="btn btn-link py-0" data-toggle="popover"
+                                        data-content='Recommendations: "Mechanised", "Conventional", "Hybrid"'
+                                        title="Mining Method"><i class="fas fa-info-circle"></i>
+                                    </button>
+                                </th>
+                                <td class="col-sm-9"><input class="form-control" type="text"
+                                        value="<%=equipment.miningMethod%>" name="equipment[miningMethod]" required />
+                                </td>
+                            </tr>
+                            <tr class="d-flex">
+                                <th class="col-sm-3" scope="row">Mineral:<button type="button" class="btn btn-link py-0"
+                                        data-toggle="popover" data-content='Recommendations: "Gold", "Platinum", "Coal"'
+                                        title="Mineral"><i class="fas fa-info-circle"></i>
+                                    </button>
+                                </th>
+                                <td class="col-sm-9"><input class="form-control" type="text"
+                                        value="<%=equipment.mineral%>" name="equipment[mineral]" required /></td>
+                            </tr>
+                            <tr class="d-flex">
+                                <th class="col-sm-3" scope="row">Ore Location:</th>
+                                <td class="col-sm-9"><input class="form-control" type="text"
+                                        value="<%=equipment.oreLocation%>" name="equipment[oreLocation]" /></td>
+                            </tr>
+                            <tr class="d-flex">
+                                <th class="col-sm-3" scope="row">Rock Hardness:</th>
+                                <td class="col-sm-9"><input class="form-control" type="text"
+                                        value="<%=equipment.rockHardness%>" name="equipment[rockHardness]" /></td>
+                            </tr>
+                            <tr class="d-flex">
+                                <th class="col-sm-3" scope="row">Visibility:<button type="button"
+                                        class="btn btn-link py-0" data-toggle="popover" data-content='Please indicate whether this technology is to be viewed in private or public mode:
+                                        public:  can be viewed by any TARA user.
+                                        private:  cannot be viewed by any TARA user except for admin managers. Acceptable values are: "public", "Public", "private", "Private".
+                                        ' title="Visibility"><i class="fas fa-info-circle"></i>
+                                    </button></th>
+                                <td class="col-sm-9"><input class="form-control" type="text"
+                                        value="<%=equipment.visibility%>" name="equipment[visibility]" /></td>
+                            </tr>
+                            <% if(currentUser && currentUser.isAdmin){ %>
+                            <tr class="d-flex">
+                                <th class="col-sm-3" scope="row">Verified:</th>
+                                <td class="col-sm-9"><input class="form-control" type="text"
+                                        value="<%=equipment.verified%>" name="equipment[verified]" /></td>
+                            </tr>
+                            <% } %>
+                            <tr class="d-flex">
+                                <th class="col-sm-12 text-center" scope="row"><a class="btn btn-link"
+                                        href="/equipment/<%=equipment._id%>/specifications/new"><i
+                                            class="far fa-edit"></i> Edit Specifications</a></th>
+                            </tr>
+                            <% if( equipment.specifications.length > 0) { %>
+                            <%equipment.specifications.forEach(function(specification){%>
+                            <tr class="d-flex">
+                                <th class="col-sm-3" scope="row"><%=specification.name%>:</th>
+                                <td class="col-sm-9"><%=specification.value%> <%=specification.unit%></td>
+                            </tr>
+                            <% }) %>
+                            <% } %>
+                            <tr class="d-flex">
+                                <th class="col-sm-3 d-none d-sm-table-cell" scope="row">Description:</th>
+                                <td class="col-sm-9"><textarea class="form-control" id="description" rows="5" cols="30"
+                                        name="equipment[description]" required><%=equipment.description%></textarea>
+                                </td>
+                            </tr>
+                            <tr class="d-flex">
+                                <th class="col-sm-12 text-center" scope="row"><a class="btn btn-link"
+                                        href="/equipment/<%=equipment._id%>/features/new"><i class="far fa-edit"></i>
+                                        Edit Features</a></th>
+                            </tr>
+                            <% if( equipment.features.length > 0) { %>
+                            <%equipment.features.forEach(function(feature){%>
+                            <tr class="d-flex">
+                                <th class="col-sm-3 d-none d-sm-table-cell" scope="row"><i
+                                        class="fas fa-caret-right"></i>
+                                </th>
+                                <td class="col-sm-9" style="white-space: pre-line"><%=feature.text%></td>
+                            </tr>
+                            <% }) %>
+                            <% } %>
+                            <tr class="d-flex">
+                                <th class="col-sm-12 text-center" scope="row">
+                                    <button class="btn btn-warning text-center"><i class="fas fa-save"></i>
+                                        Save</button>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="card mb-3">
+                <div class="card-body">
+
+                    <!-- <div class="text-right">
+                        <a class="btn btn-link" href="/equipment/<%=equipment._id%>/specifications/new"><i
+                                class="fas fa-plus"></i> Add Specification</a>
+                    </div>
+
+                    <ul class="list-group list-group-flush">
+                        <%equipment.specifications.forEach(function(specification){%>
+                        <li class="list-group-item"><%=specification.name%>: <%=specification.value%>
+                            <%=specification.unit%></li>
+                        <% }) %>
+                    </ul>
+
+                    <div class="text-right">
+                        <a class="btn btn-link" href="/equipment/<%=equipment._id%>/features/new"><i
+                                class="fas fa-plus"></i> Add Feature</a>
+                    </div>
+
+                    <ul class="list-group list-group-flush">
+                        <%equipment.features.forEach(function(feature){%>
+                        <li class="list-group-item"><%=feature.text%></li>
+                        <% }) %>
+                    </ul> -->
+
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <form class="" action="/equipment/<%=equipment._id%>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger"><i class="fas fa-trash-alt"></i>
+                                    Delete
+                                    Equipment</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- <script>
+    $(function () {
+        // display1Val = $(".list-datasheet").html();
+        // display2Val = display1Val.split("/").pop()
+        // $(".list-datasheet").html(display2Val);
+        $(".list-datasheet").html($(".list-datasheet").html().split("/").pop());
+    });
+</script> -->
+
+
+<% include ../partials/footer %>

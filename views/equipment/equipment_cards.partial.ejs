@@ -1,0 +1,81 @@
+<div class="col-md-10 row pt-3 equipments">
+  <% equipment.forEach(function(equip){ %>
+      <% if(equip.visibility==='public' || equip.visibility==='Public' || (currentUser &&
+          equip.author.id.equals(currentUser._id)) || (currentUser && currentUser.isAdmin)) { %>
+
+          <div class="col-md-4">
+              <div class="card">
+                  <a href="favorite/equipment/<%=equip._id%>">
+                    
+                    <% if(equip.isFav){ %>
+                    <i class="fa fa-star" aria-hidden="true"
+                      style="position: absolute;left: 88%; top: 4%;color:red;"></i>
+                    <% } else { %>
+                    <i class="far fa-star" aria-hidden="true"
+                        style="position: absolute;left: 88%; top: 4%;color:red;"></i>
+                    <% } %>                          
+                  </a>
+                  <img src="<%= (equip.images[0]) && equip.images[0].file %>"
+                      onerror="this.src='/ui/images/default/unavailable-image.png'" class="card-img-top"
+                      alt="...">
+                  <div class="card-body">
+                      <h5 class="card-title">
+                          <%=equip.name%>
+                      </h5>
+
+                      <p class="card-text mt-3">
+                          <%=equip.oem%>
+                      </p>
+                      <div class="mt-5 row">
+                          <div class="col-md-6">
+                              <div class="form-check mb-2 mt-3">
+                                  <input type="checkbox" class="form-check-input" id="Compare">
+                                  <label class="form-check-label" for="Compare">Compare</label>
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+
+                              <a href="/equipment/<%=equip._id%>" type="button"
+                                  class="btn btn-maincolor2">View
+                                  more</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+          <% } %>
+              <% }); %>
+
+                  <div class="" style="width:100%">
+                      <div class="col-md-12 mb-5">
+                          <nav class="woocommerce-pagination">
+                              <ul class="page-numbers">
+                                  <% if (pageType==='all' && numPages> 1) {%>
+                                      <% for(let i=1; i <=numPages; i++) { %>
+                                          <li>
+                                              <% if (pageNumber==i) {%>
+                                                  <a href="/equipment?pageNumber=<%=i%>">
+                                                      <span class="page-numbers current">
+                                                          <%=i%>
+                                                      </span>
+                                                  </a>
+                                                  <% } else { %>
+                                                      <a class="page-numbers"
+                                                          href="/equipment?pageNumber=<%=i%>">
+                                                          <%=i%>
+                                                      </a>
+                                                      <% } %>
+                                          </li>
+                                          <% } %>
+                                              <% } %>
+                                                  <li>
+                                                      <a class="next page-numbers"
+                                                          href="/equipment?pageNumber=<%=pageNumber+1%>"><i
+                                                              class="fas fa-chevron-right"></i></a>
+                                                  </li>
+                              </ul>
+                          </nav>
+                      </div>
+                  </div>
+</div>
