@@ -12,6 +12,8 @@ var equipmentSchema = new mongoose.Schema({
   oreLocation: String,
   rockHardness: String,
   mineral: { type: String, required: true },
+  approvalStatus: { type: String, enum: ['approved', 'pending', 'rejected'], default: 'pending' },
+  comment: { type: String },
   miningMethod: { type: String, required: true },
   miningCycle: { type: String, required: true },
   verified: String,

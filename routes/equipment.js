@@ -7,7 +7,7 @@ var middleware = require("../middleware");
 var fs = require("fs");
 var config = require("../config");
 const equipmentService = require("../services/equipment.service");
-
+let mail = require('../helpers/mail')
 async function searchEquipment(searchString) {
   let wildcard = RegExp(".[*]$");
   let wildcardTerms = [];
@@ -165,7 +165,45 @@ router.get("/search", async function (req, res) {
     res.redirect("/equipment");
   }
 });
-
+//approve or reject equipment
+router.put(
+  "/approve/equipment/:id",
+  middleware.isAdmin,
+  middleware.isActive,
+  async function (req, res) {
+    let equipment = await Equipment.findOne({ _id: req.params.id });
+    let user = User.findOne({ _id: equipment.author._id });
+    let text;
+    Equipment.updateOne(
+      { _id: req.params.id },
+      { $set: { approvalStatus: req.body.status, comment: req.body.comment } },
+      async function (err, updatedEquipment) {
+        if (err) {
+          req.flash(
+            "error",
+            "Update equipment error. Could not update equipment status."
+          );
+          return res
+            .status(400)
+            .redirect("/equipment/" + req.params.id + "/edit");
+        } else {
+          if (req.body.status == 'approved') {
+            text = '<p>Hello , Your Equipment ' + equipment.name + ' have been ' + req.body.status + ' by TARA .</p>'
+          } else {
+            text = '<p>Hello , Your Equipment ' + equipment.name + ' have been ' + req.body.status + ' by TARA .</p> <br>Reason-' + req.body.comment + '</br>'
+          }
+          let subject = 'Equipment Status - ' + req.body.status
+          let body = text
+          let toMail = user.email
+          try { mail.sendEmail(subject, body, toMail) } catch (e) {
+            console.log('mail not sent')
+          }
+          res.send({ status: 'Success', message: 'Equipment Succesfully ' + req.body.status }).redirect("/equipment/");
+        }
+      }
+    );
+  }
+);
 router.get("/", async function (req, res) {
   let pageSize = config.equip.maxResultsPerPage;
   let equipmentCount = 0;

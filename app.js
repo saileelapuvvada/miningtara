@@ -21,25 +21,21 @@ const contactRoutes = require("./routes/contact")
 const newsletterRoutes = require("./routes/newsletter")
 const favorites = require("./routes/favroite")
 
-
-const { db: { host, port, name } } = config;
-const connectionString = `mongodb://localhost:27017/tara`;
+const {
+  db: { host, port, name },
+} = config;
+const connectionString = `mongodb+srv://shorturl501:JN5CVGNu5HXW4RR6@test.ts665.mongodb.net/tara?retryWrites=true&w=majority`;
 try {
-    mongoose.connect(connectionString, {
-        auth: {
-            user:'tarauser',
-            password:'ThisIsInteresting'
-        },
-        authSource:"admin",
-        useNewUrlParser: true,
-        useCreateIndex: true,
-    }).then(() => {
-        console.log('Connected to DB!');
-    }).catch(err => {
-        console.log('ERROR:', err.message);
+  mongoose
+    .connect(connectionString)
+    .then(() => {
+      console.log("Connected to DB!");
+    })
+    .catch((err) => {
+      console.log("ERROR:", err.message);
     });
 } catch (err) {
-    console.log('ERROR:', err.message, "Set DATABASEURL environment variable");
+  console.log("ERROR:", err.message, "Set DATABASEURL environment variable");
 }
 
 mongoose.Promise = Promise;

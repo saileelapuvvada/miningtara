@@ -9,7 +9,8 @@ var UserSchema = new mongoose.Schema({
   firstname: { type: String, required: true },
   lastname: { type: String, required: true },
   email: { type: String, unique: true, required: true },
-  status: String,
+  status: { type: String, enum: ['approved', 'pending', 'rejected'], default: 'pending' },
+  comment: { type: String },
   companyName: { type: String, required: true },
   address: {
     street1: String,

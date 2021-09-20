@@ -6,6 +6,7 @@ var {
   validateNewUserData,
   validateUpdatedUserData,
 } = require("../models/user");
+let mail = require('../helpers/mail')
 var middleware = require("../middleware");
 var passport = require("passport");
 var _ = require("lodash");
@@ -169,7 +170,44 @@ router.post("/reset/:token", function (req, res) {
     }
   );
 });
-
+//approve or reject user
+router.put(
+  "/approve/user/:id",
+  middleware.isAdmin,
+  middleware.isActive,
+  async function (req, res) {
+    let text;
+    let user = await User.findOne({ _id: req.params.id });
+    User.updateOne(
+      { _id: req.params.id },
+      { $set: { status: req.body.status, comment: req.body.comment } },
+      async function (err, updatedUserStatus) {
+        if (err) {
+          req.flash(
+            "error",
+            "Update equipment error. Could not update user status."
+          );
+          return res
+            .status(400)
+            .redirect("/equipment/" + req.params.id + "/edit");
+        } else {
+          if (req.body.status == 'approved') {
+            text = '<p>Hello , Your Account with Username ' + user.name + ' has been ' + req.body.status + ' by TARA .</p> '
+          } else {
+            text = '<p>Hello , Your Account with Username ' + user.name + ' has been ' + req.body.status + ' by TARA .</p> <br>Reason-' + req.body.reason + '</br>'
+          }
+          let subject = 'User Status - ' + req.body.status
+          let body = text
+          let toMail = user.email
+          try { mail.sendEmail(subject, body, toMail) } catch (e) {
+            console.log('mail not sent')
+          }
+          res.send({ status: 'Success', message: 'User Status Changed to ' + req.body.status }).redirect("users/index")
+        }
+      }
+    );
+  }
+);
 // NEW User FORM (Sign Up Form)
 router.get("/new", function (req, res) {
   res.render("users/new");
